@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from fast_zero.schemas import UserPublic
+from fast_zero.security import create_access_token
 
 
 def test_create_user(client):
@@ -85,7 +86,6 @@ def test_delete_user(client, user, token):
     )
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
-
 
 
 def test_get_user_should_return_not_found__exercicio(client):
